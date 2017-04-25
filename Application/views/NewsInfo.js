@@ -48,8 +48,8 @@ var styles=StyleSheet.create({
        fontWeight : 'bold'
    },
    newsPic : {
-       width : 180,
-       height : 120,
+       width : 380,
+       height : 180,
        margin: 10,
    },
    newsContent : {
