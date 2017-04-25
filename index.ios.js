@@ -12,12 +12,12 @@ import {
   View
 } from 'react-native';
 
-import TabBarView from './Application/views/TabBarView.js'
+import Index from './Application/views/Index.js'
 
 export default class NewNewsApp extends Component {
   render() {
     return (
-      <TabBarView />
+      <Index />
     );
   }
 }

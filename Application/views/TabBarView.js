@@ -54,14 +54,7 @@ export default class TabBarView extends Component {
               selectedTab: 'blueTab',
             });
           }}>
-          <NavigatorIOS
-            ref='nav'
-            initialRoute={{
-              component: NewsList,
-              title: '体育新闻',
-              }}
-              style={{flex: 1}}
-            />
+          <NewsList navigator={this.props.navigator}></NewsList>
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"
@@ -110,8 +103,4 @@ var styles = StyleSheet.create({
 });
 
 
-
-
-
-
-AppRegistry.registerComponent('NewNewsApp', () => NewNewsApp);
+AppRegistry.registerComponent('TabBarView', () => TabBarView);
