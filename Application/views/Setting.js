@@ -6,6 +6,7 @@ import {
   Text,
   Switch,
 } from 'react-native';
+import Button from 'antd-mobile/lib/button'
 
 export default class Setting extends Component{
   state={falseSwitchIsOn1:false,
@@ -36,6 +37,7 @@ falseSwitchIsOn3:false,};
                         onValueChange={(value) => this.setState({falseSwitchIsOn3: value})}
                         value={this.state.falseSwitchIsOn3} />
         </View>
+        <Button>Start</Button>
       </View>
     );
   }

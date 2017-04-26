@@ -7,11 +7,13 @@ import {
   View,
   Text,
   Switch,
+  RefreshControl,
   TouchableOpacity
 } from 'react-native';
 import LoadingView from './Loading.js';
 import NewsInfo from './NewsInfo.js';
-var REQUEST_URL = 'http://api.dagoogle.cn/news/get-news?tableNum=7&pagesize=20';
+
+//var REQUEST_URL = "http://api.dagoogle.cn/news/get-news?tableNum="+this.props.newsType+"&pagesize=20";
 
 export default class NewsList extends Component
 {
@@ -20,12 +22,13 @@ export default class NewsList extends Component
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
       loaded: false,
+      refreshing: false,
     };
   componentDidMount(){
     this.fetchData();
   }
   fetchData = () => {
-    fetch(REQUEST_URL)
+    fetch("http://api.dagoogle.cn/news/get-news?tableNum="+this.props.newsType+"&pagesize=20")
    .then((response)=>response.json())
     .then((jsondata) =>{
         console.log(jsondata);
@@ -38,6 +41,13 @@ export default class NewsList extends Component
        alert(e);
     });
   };
+  onRefresh= ()=>{
+     this.setState({ refreshing: true });
+     setTimeout(() => {
+       this.fetchData();
+        this.setState({ refreshing: false });
+    }, 1000);
+  };
   render()
   {
     if(!this.state.loaded)
@@ -49,6 +59,13 @@ export default class NewsList extends Component
          dataSource={this.state.dataSource}
          renderRow={this.renderNews}
          style={styles.newsList}
+         refreshControl={
+          <RefreshControl
+            refreshing={this.state.refreshing}
+            onRefresh={this.onRefresh}
+            title="Loading..."
+          />
+        }
        />
     );
   }

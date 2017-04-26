@@ -46,7 +46,7 @@ export default class TabBarView extends Component {
         tintColor="lightskyblue"
       >
         <TabBarIOS.Item
-          title="news"
+          title="sports"
           icon={{uri: base64Icon, scale: 3}}
           selected={this.state.selectedTab === 'blueTab'}
           onPress={() => {
@@ -54,7 +54,17 @@ export default class TabBarView extends Component {
               selectedTab: 'blueTab',
             });
           }}>
-          <NewsList navigator={this.props.navigator}></NewsList>
+          <NewsList navigator={this.props.navigator} newsType='7'></NewsList>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          systemIcon="bookmarks"
+          selected={this.state.selectedTab === 'secondTab'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'secondTab',
+            });
+          }}>
+          <NewsList navigator={this.props.navigator} newsType='8'></NewsList>
         </TabBarIOS.Item>
         <TabBarIOS.Item
           systemIcon="history"

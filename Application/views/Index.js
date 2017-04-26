@@ -13,7 +13,7 @@ export default class Index extends Component
         ref='nav'
         initialRoute={{
           component: TabBarView,
-          title: '体育新闻',
+          title: '新新闻',
           }}
           style={{flex: 1}}
         />
